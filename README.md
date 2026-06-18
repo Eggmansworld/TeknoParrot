@@ -1,3 +1,5 @@
+# **[🌐 View the brand new TP Game Notes page!!](https://eggmansworld.github.io/TeknoParrot/)**
+
 **Core archive size**: 1.47TB (ZStandard)  
 **Supplementary archive size**: 259GB (ZStandard)  
 update cadence: when new content is released and tested  
@@ -15,6 +17,7 @@ Welcome to the mega-mighty **TeknoParrot Collection** — a cleaned, organized, 
 - [What This Collection Is Trying to Do](#what-this-collection-is-trying-to-do)
 - [Why There Are Two DATs](#why-there-are-two-dats)
 - [Why RomVault Only?](#why-romvault-only)
+- [Eggman's TeknoParrot Game Notes](#eggman-tp-game-notes)
 - [About TPUI's ROM Scanner](#about-tpuis-rom-scanner)
 - [How to Store Your Games](#how-to-store-your-games)
 - [Rebuilding Tips for Nested ZIPs](#rebuilding-tips-for-nested-zips)
@@ -179,6 +182,39 @@ Also, a small number of games contain **nested ZIP archives** that must remain z
 > **Do not ask for RomVault support in the TeknoParrot Discord.** If your question is about RomVault, take it to the RomVault community.
 
 ---
+
+<a id="eggman-tp-game-notes"></a>
+
+## 📋 TeknoParrot Game Notes
+
+An interactive compatibility and setup reference for the TeknoParrot collection, updated alongside every dat release.
+
+**[🌐 View the Game Notes page](https://eggmansworld.github.io/TeknoParrot/)**
+
+---
+
+### What's covered
+
+Each game entry includes:
+
+- **Compatibility status** — Working / Partial / Broken / Untested
+- **Hardware compatibility** — per-GPU family results (NVIDIA, AMD, Intel) with known issue details
+- **Setup executables** — primary, secondary (daemon), and test menu EXEs where applicable
+- **Arcade system** — the original hardware platform the game ran on
+- **Supplementary archives** — alternate versions, orientation fixes, patches, mods, and DOX/EMU/APP packs linked to each title
+- **Notes** — setup tips, workarounds, controller config, and anything else worth knowing
+- **Tags** — quick-reference labels for common traits (e.g. `lightgun`, `amd-fix`, `no-sound-fix`)
+
+### Using the page
+
+The page is fully client-side — no login, no install, works in any browser.
+
+- **Search** the full text of any field including notes
+- **Filter** by status, TPLoader backend (TeknoParrot, OpenParrot, RPCS3…), or GPU compatibility
+- **Expand** any row to see the full detail panel
+- Works on mobile
+
+
 
 <a id="about-tpuis-rom-scanner"></a>
 
