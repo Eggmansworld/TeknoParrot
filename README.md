@@ -187,7 +187,7 @@ Also, a small number of games contain **nested ZIP archives** that must remain z
 
 ## 📋 TeknoParrot Game Notes
 
-An interactive compatibility and setup reference for the TeknoParrot collection, updated alongside every dat release.
+An interactive compatibility and setup reference for the TeknoParrot collection, updated alongside every dat release. Other than the notes themselves and the condition of the game (working, broken etc), the existing XML's provided by the TeknoParrot UI are the source of information that, combined with everything else, forms the webpage.
 
 **[🌐 View the Game Notes page](https://eggmansworld.github.io/TeknoParrot/)**
 
