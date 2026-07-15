@@ -191,6 +191,8 @@ An interactive compatibility and setup reference for the TeknoParrot collection,
 
 **[🌐 View the Game Notes page](https://eggmansworld.github.io/TeknoParrot/)**
 
+<img width="1254" height="1254" alt="TeknoParrot_game_notes_pic" src="https://github.com/user-attachments/assets/e03f3c3f-06d7-49cb-a8f0-a9a3f9e6ef07" />
+
 ---
 
 ### What's covered
