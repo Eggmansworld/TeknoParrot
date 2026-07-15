@@ -215,7 +215,7 @@ In RomVault, you can store the collection in several archive formats:
 The short version:
 
 - **Use ZStandard** if you want fast extraction and more practical day-to-day use
-- **Use TorrentZip** if you want the safest common-denominator choice
+- **Use TorrentZip** if you want the safest common-denominator choice and like sharing with random people
 - **Avoid 7z/LZMA** unless you enjoy watching your machine age in real time
 
 ### Example comparison
@@ -269,6 +269,10 @@ And remember:
 Some games contain ZIP files inside the game folder as part of the game’s original structure.
 
 By default, RomVault treats ZIP files as archives and scans the **contents inside** them. In a few cases, what you actually need is for RomVault to treat the ZIP as a normal file.
+
+## Rebuilding Tips for CHD's
+
+As much as I dislike putting a CHD inside a zip, my hands are tied when it comes to packaging them up.  Just understand that a CHD is a container, and contains its own compression formats internally, thus it has an internal SHA1 hash value of its internal contents. There is zero bonus for putting them inside a zip. They belong out on their own, in the raw. It would be too much work and confuse the hell out of most people who barely understand what a datfile is to keep CHD's in their native format and out of zips. So, they're datted as dir2dat where the external SHA1 file hash is only calculated.  It's not ideal, but it's all I have to work with.
 
 ### Workarounds
 
@@ -364,6 +368,10 @@ Common causes include:
 - an old third-party loader or patch is interfering
 - required service mode settings were never configured
 - TPUI changed and something that used to work no longer behaves the same way
+- you didn't read the manual
+- you didn't know a manual existed
+- you found the manual, but can't understand how to read it
+- you asked someone else to read the manual for you, and are now more confused than before
 
 The TP developers do their best to support NVIDIA, AMD, and Intel hardware, but that does not mean every game behaves the same across all GPUs.
 
@@ -393,7 +401,7 @@ Intel graphics should generally be treated as a last-resort option. Newer Intel 
 I do not personally test on AMD GPUs, so I am going by user reports here. AMD users usually have more work to do, and some games may never behave properly at all. Some older games may require AMD graphics patches.
 
 ### NVIDIA
-NVIDIA is the clear winner for TeknoParrot compatibility. If you are serious about getting the widest range of games running with the least pain, use NVIDIA.
+NVIDIA is the clear winner for TeknoParrot compatibility. If you are serious about getting the widest range of games running with the least pain, use NVIDIA. Anything in the RTX 3000-series or earlier, even going back to the 1080-series, is still viable as a GPU. Check with the TP Discord about specific card questions.
 
 ### CPU choice
 CPU vendor matters much less than GPU vendor. In general, Intel and AMD CPUs are both fine. A few games may dislike specific Intel generations, but that is the exception rather than the rule.
@@ -469,7 +477,7 @@ If a game is running like it got into the good cocaine, this is one of the first
 
 ## Why Some Games Need Admin Mode
 
-Some games require TPUI to be run with elevated privileges.
+Some older games require TPUI to be run with elevated privileges.
 
 If TPUI complains that it needs administrator rights:
 
@@ -490,7 +498,7 @@ Nothing mysterious there.
 - Intel Core i7-13700
 - 64 GB RAM
 - NVMe local storage
-- NVIDIA T1000 8 GB
+- NVIDIA RTX 3050 8GB
 - Windows 11 Pro
 
 **Every single game has been tested, including subscriber-only games.**
@@ -512,7 +520,7 @@ Many of these dumps came from the internet and were passed around repeatedly bef
 
 I do my best to clean the folders back toward a fresher, more original state. When possible, I compare against fuller drive dumps to make that process more accurate.
 
-It can take multiple iterations of the dat before a newly added game is fully cleaned up.
+It can take multiple iterations of the dat before a newly added game is fully cleaned up. DO NOT EXPECT PERFECTION ON THE FIRST RELEASE!  Give me some bloody time.
 
 ### Typical cleanup work
 
@@ -520,8 +528,8 @@ It can take multiple iterations of the dat before a newly added game is fully cl
 - remove other loaders and their support files
 - remove obvious original-hardware system leftovers where safe
 - remove random junk files and folders not needed for the game
-- remove obvious log files, while leaving required `.log` data files intact
-- use ReShade where needed for portrait-to-landscape presentation with bezel support
+- remove obvious log files, while leaving required `.log` or similar data files intact
+- use ReShade where needed for portrait-to-landscape presentation with bezel support (Supplementary games)
 - include custom crosshairs where the game supports them
 - remove files such as:
   - `teknoparrot.ini`
@@ -575,7 +583,7 @@ If you are looking for the **Incredible Technologies Super Easy Universal Setup 
 
 ## Where to Find Content
 
-There are community-created torrents and archival sources floating around in the usual places.
+There are community-created torrents and archival sources floating around in the usual places. Roms are Rare and org has a big archive.
 
 This README is not intended to be a sourcing manual. Use your own judgment, be careful with unknown files, and do your own homework.
 
@@ -587,7 +595,7 @@ This README is not intended to be a sourcing manual. Use your own judgment, be c
 
 No.
 
-I am not associated with TeknoParrot, its admins, or its developers. I am just a collector who wanted my own curated TeknoParrot set.
+I am not associated with TeknoParrot, its admins, or its developers. I am just a collector who wanted my own curated TeknoParrot set. I don't even get a free subscription.
 
 ---
 
