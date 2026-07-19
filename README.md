@@ -1,5 +1,3 @@
-# **[🌐 View the brand new TP Game Notes page!!](https://eggmansworld.github.io/TeknoParrot/)**
-
 **Core archive size**: 1.47TB (ZStandard)  
 **Supplementary archive size**: 259GB (ZStandard)  
 update cadence: when new content is released and tested  
@@ -7,6 +5,9 @@ update cadence: when new content is released and tested
 *Curated by Eggman.*
 
 Welcome to the mega-mighty **TeknoParrot Collection** — a cleaned, organized, collector-focused RomVault set built around the TeknoParrot ecosystem. This project exists to take arcade game dumps and turn them into something more consistent, more manageable, and a lot less irritating to maintain and utilize.
+
+# **[🌐 View the TP Game Notes page](https://eggmansworld.github.io/TeknoParrot/)**
+Various game notes written by me during testing.  Some feel like short stories.
 
 <img width="1536" height="1024" alt="TeknoParrot Collection1" src="https://github.com/user-attachments/assets/fe8ef080-5b1e-4b05-8ebf-658ac22a265a" />
 
