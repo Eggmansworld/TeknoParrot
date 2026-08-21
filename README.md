@@ -305,9 +305,9 @@ And remember:
 
 ## Rebuilding Tips for Nested ZIPs
 
-Some games contain ZIP files inside the game folder as part of the game’s original structure.
+Some games contain ZIP files inside their game folder as part of the game’s original file structure. By default, RomVault treats ZIP files as archives and scans the **contents inside** them. In a few cases, what you actually need is for RomVault to treat the ZIP as a normal file.  The nested zip files included in this collection need to remain as a zip file for that game to function, and must not have any deflate algorithm applied to them that does not 100% align with the deflate algorithm, otherwise the game's decompressor will not be able to unpack the zip contents to use during gameplay. This means no ZStandard, no 7Zip. TorrentZip is OK to use but it does not create a "pure" deflate archive as it adds a comment line to indicate its deterministic hash, which is non-standard.
 
-By default, RomVault treats ZIP files as archives and scans the **contents inside** them. In a few cases, what you actually need is for RomVault to treat the ZIP as a normal file.
+Bearing all this in mind, I decided to simply ensure the handful of zips this collection needs to manage are all using the natural, simple and fully compatible Zip DEFLATE, with "STORE" compression set so no compression is applied to the nested zip or its contents. This gives the user the ability to recreate the archive should the need ever exist, as there is no compression to deal with.  Since most people will compress the parent game folder with TorrentZip, 7Zip or Zstandard, the lack of compression in these internal nested zips will be compressed at the parent level anyway, so you'll still get the space savings, just in a roundabout way.
 
 ## Rebuilding Tips for CHD's
 
