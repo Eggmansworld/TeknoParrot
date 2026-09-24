@@ -1,5 +1,5 @@
-**Core archive size**: 1.50TB (ZStandard)  
-**Supplementary archive size**: 259GB (ZStandard)  
+**Core archive size**: 1.52TB (ZStandard)  
+**Supplementary archive size**: 268GB (ZStandard)  
 update cadence: when new content is released and tested  
 **[🌐TP Game Notes quick link](https://eggmansworld.github.io/TeknoParrot/)**
  
