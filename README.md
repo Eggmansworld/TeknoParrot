@@ -1,11 +1,11 @@
-**Core archive size**: 1.52TB (ZStandard)  
-**Supplementary archive size**: 268GB (ZStandard)  
+**Core archive size**: 1.55TB (ZStandard)  
+**Supplementary archive size**: 269GB (ZStandard)  
 update cadence: when new content is released and tested  
 **[🌐TP Game Notes quick link](https://eggmansworld.github.io/TeknoParrot/)**
  
 *Curated by Eggman.*
 
-Welcome to the mega-mighty **TeknoParrot Collection** — a cleaned, organized, collector-focused RomVault set built around the TeknoParrot ecosystem. This project exists to take arcade game dumps and turn them into something more consistent, more manageable, and a lot less irritating to maintain and utilize.
+Welcome to my mega-mighty **TeknoParrot Collection** — a cleaned, organized, collector-focused RomVault set built around the TeknoParrot ecosystem. This project exists to take arcade game backups and turn them into something more consistent, more manageable, and a lot less irritating to maintain and utilize for original game owners.
 
 <img width="1536" height="1024" alt="TeknoParrot Collection1" src="https://github.com/user-attachments/assets/fe8ef080-5b1e-4b05-8ebf-658ac22a265a" />
 
@@ -48,19 +48,32 @@ Welcome to the mega-mighty **TeknoParrot Collection** — a cleaned, organized, 
 
 **TeknoParrot** (also known as **TeknoParrot User Interface** or simply **TPUI**) is a software application that allows users to play original **arcade games** on their personal computers. It provides compatibility for a wide range of arcade hardware, making it possible to run games originally designed for dedicated arcade systems.
 
-TeknoParrot supports many platforms, including major families from:
+TeknoParrot supports over 140 game platforms and systems:
 
-- **Namco** — ES1, ES3, ES3A, ES3B, ES3X, ES4, N2, BNA1, BNA1 LITE, BNA1-ES4, System 147, 246, 256, 357
-- **Sega** — ALLS, Amusements, Europa-R, Lindbergh Red/Red EX/Yellow, Nu, Nu 1.1, RingEdge, RingEdge 2, RingWide, Triforce
-- **Taito** — NESICAxLive, NESiCAxLive 2, Type X, Type Zero, Type X+, Type X2, Type X3, Type X4
-- **Konami**
-- **Global VR**
-- **Raw Thrills**
-- **Incredible Technologies**
+## Supported Systems
 
-And plenty more besides:
+### Multi-Platform Manufacturers
 
-ICE/ICE-RT, Team Play, Triotech, Chicago Gaming Company, Coastal, Covielsa, D-Gate, EXAMU eX-BOARD, Em-Teck, Gaelco, GameWax, Interactive Light, Midway, PAOKAI, Phantom, Ritual Entertainment/Activision, Tsunami, UDC, UNIS, Uniana, WAHLAP, Adrenaline, Cave, Cecropia, and others.
+| Manufacturer | Platforms | Manufacturer | Platforms |
+|---|---|---|---|
+| **Atari** | Denver · Flagstaff · Hard Drivin · MediaGX · Phoenix · Seattle / Seattle Widget · Vegas | **Capcom** | CPS1 / CPS2 / CPS3 · ZN-1 / ZN-2 |
+| **Coastal** | PC / Linux PC | **Gaelco** | PC / PC (3D Hardware) / PC (Atari License) |
+| **ICE** | PC / Linux PC / ICE-RT Linux PC | **Konami** | Cobra · GQ · GTI Club · GV · Hornet · M2 · NWK-TR · PC · System 573 · Viper |
+| **Midway** | Atlantis · PC · Seattle · V Unit / V Unit Plus · Vegas · Zeus / Zeus II | **Namco** | BNA1 / BNA1 LITE / BNA1-ES4 · ES1 / ES3 / ES3A / ES3B / ES3X / ES4 · N2 · System 10 / 11 / 12 / 21 / 22 / 22.5 / 23 / 23 Evolution 2 · Super System 22 / 23 · System 147 / 246 / 256 / 357 / 369 |
+| **Raw Thrills** | Raw Thrills / PC / Linux PC | **Sega** | ALLS · Amusements · Chihiro · Europa-R · Lindbergh Red / Red EX / Silver / Yellow · Model 1 / 2 / 3 · Nu / Nu 1.1 · PC · RingEdge / RingEdge 2 / RingEdge 2 (APM2) / RingWide · System 32 · Triforce |
+| **Sony ZN-1** | Sony · Acclaim · Atari · Atlus · Eighting, Raizing · Taito FX-1 · Tecmo TPS | **Taito** | Air · FX-1 · G-NET / G-NET (Tecmo TPS) · NESiCAxLive / NESiCAxLive2 · PPC JC Type-C · Type X / X PC / X Zero / X+ / X2 / X3 / X4 |
+| **Team Play** | PC / Linux PC | | |
+
+### Other Systems
+
+| | | | | |
+|---|---|---|---|---|
+| Acclaim Epidemic | Adrenaline PC | AirFrame PC | CAVE PC | Cecropia PC |
+| Chicago Gaming Company PC | Cosmodog PC | Covielsa PC | D-Gate PC | Em-Teck PC |
+| EXAMU eX-BOARD | GameWax PC | Global VR PC | Interactive Light PC | IT Nighthawk |
+| Korean PC | Nintendo RVA | PAOKAI Linux PC | Phantom PC | Ritual Entertainment-Activision Custom |
+| Roxor Games PC | SNK Hyper Neo Geo 64 | TouchMagix PC | Triotech PC | Tsunami PC |
+| UDC PC | Uniana PC | UNIS PC | Unique PC | WAHLAP PC |
 
 Players can configure game settings, map controls to keyboard, controller, or even force feedback wheels, and in some cases use network play to recreate more of the original arcade experience on PC. It is especially popular with people who enjoy preserving and playing arcade titles that were never properly released for home use.
 
@@ -309,11 +322,13 @@ And remember:
 
 Some games contain ZIP files inside their game folder as part of the game’s original file structure. By default, RomVault treats ZIP files as archives and scans the **contents inside** them. In a few cases, what you actually need is for RomVault to treat the ZIP as a normal file.  The nested zip files included in this collection need to remain as a zip file for that game to function, and must not have any deflate algorithm applied to them that does not 100% align with the deflate algorithm, otherwise the game's decompressor will not be able to unpack the zip contents to use during gameplay. This means no ZStandard, no 7Zip. TorrentZip is OK to use but it does not create a "pure" deflate archive as it adds a comment line to indicate its deterministic hash, which is non-standard.
 
-Bearing all this in mind, I decided to simply ensure the handful of zips this collection needs to manage are all using the natural, simple and fully compatible Zip DEFLATE, with "STORE" compression set so no compression is applied to the nested zip or its contents. This gives the user the ability to recreate the archive should the need ever exist, as there is no compression to deal with.  Since most people will compress the parent game folder with TorrentZip, 7Zip or Zstandard, the lack of compression in these internal nested zips will be compressed at the parent level anyway, so you'll still get the space savings, just in a roundabout way.
+Bearing all this in mind, I decided to simply ensure any nested zips in this collection all use the natural, simple and fully compatible Zip DEFLATE, with "STORE" compression set so no compression is applied to the nested zip or its contents. This gives the user the ability to recreate the zip archives should the need ever exist, as there is no compression to deal with. 7-Zip is the chosen archiver to create these nested and uncompressed zips.
+
+Since most people will compress the parent game folder with TorrentZip, 7Zip or Zstandard, the lack of compression in these internal nested zips will be compressed at the parent level, so you'll still get space savings.
 
 ## Rebuilding Tips for CHD's
 
-As much as I dislike putting a CHD inside a zip, my hands are tied when it comes to packaging them up.  Just understand that a CHD is a container, and contains its own compression formats internally, thus it has an internal SHA1 hash value of its internal contents. There is zero bonus for putting them inside a zip. They belong out on their own, in the raw. It would be too much work and confuse the hell out of most people who barely understand what a datfile is to keep CHD's in their native format and out of zips. So, they're datted as dir2dat where the external SHA1 file hash is only calculated.  It's not ideal, but it's all I have to work with.
+As much as I dislike putting a CHD inside a zip, it cannot be helped.  Just understand that a CHD is a container, and contains its own compression formats internally, thus it has an internal SHA1 hash value of its internal contents. There is zero bonus for putting them inside a zip. They belong out on their own, in the raw. It would be too much work and confuse the hell out of most people who barely understand what a datfile is to keep CHD's in their native format and outside of zips. It's not ideal, but it's all I have to work with to keep things in the folder and structural format TPUI wants.
 
 ### Workarounds
 
@@ -353,7 +368,7 @@ Instead, set folder exclusions for:
 - your temp/cache folders
 - your ToSort folder
 
-Common executables that may false-positive include:
+Common executables that may trigger a false-positive include:
 
 - *Daytona Championship USA* [Sega PC]
 - *Exception* [Taito NESiCAxLive]
