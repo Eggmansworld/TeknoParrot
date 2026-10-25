@@ -7,6 +7,8 @@ update cadence: when new content is released and tested
 
 Welcome to my mega-mighty **TeknoParrot Collection** — a cleaned, organized, collector-focused RomVault set built around the TeknoParrot ecosystem. This project exists to take arcade game backups and turn them into something more consistent, more manageable, and a lot less irritating to maintain and utilize for original game owners.
 
+I am unaffiliated with TeknoParrot, and I do not do outreach or support. Do not send me messages about issues you're having with TP setup or games. Take it up with the TP devs and community in their Discord channels.
+
 <img width="1536" height="1024" alt="TeknoParrot Collection1" src="https://github.com/user-attachments/assets/fe8ef080-5b1e-4b05-8ebf-658ac22a265a" />
 
 ## Table of Contents
@@ -238,21 +240,11 @@ The page is fully client-side — no login, no install, works in any browser.
 
 ## About TPUI's ROM Scanner
 
-The TeknoParrot developers chose to use this DAT file as a reference point for their internal **ROM Scanner** feature in TPUI.
+At one point, the TeknoParrot developers used my datfile as the reference for their internal **ROM Scanner** feature in TPUI. I added metadata fields and additional MD5 hashing to make it compatible with their scanner, but I had **no involvement** in how it was coded, how it behaved, how reliable it worked, or any feedback or input.
 
-I added metadata fields needed to make it compatible with their scanner, but I had **no involvement** in:
+At the end of October 2026, The TP Devs decided to remove support for my dat and instead have chosen to do things their own way.
 
-- how the scanner was coded
-- how it behaves
-- how reliable it is
-- what it does or does not detect
-- limitation of only supporting one dat
-
-If the scanner fails to detect your game correctly, that is a **TeknoParrot-side** issue, not a collection-side issue.
-
-If your files and folders match the DAT exactly, the scanner *should* recognize them more reliably, but that still depends on how TPUI itself behaves.
-
-> **Do not post GitHub issues here about getting a specific game to run.** This repository is for the DAT, notes, and related material. For setup or game support, use the official TeknoParrot Discord.
+I will be removing the MD5 hashes from the datfile to reduce its size, as MD5 hashes are redundant and were only added to allow the datfile to be used with TPUI. RomVault has CRC and SHA1 values to use for hashing, which is more than plenty for file matching.
 
 ---
 
@@ -661,7 +653,7 @@ I am not associated with TeknoParrot, its admins, or its developers. I am just a
 
 If you paid some back-alley drive seller for this dat or for a set built from it, then congratulations — you got hustled.
 
-This project exists because I enjoy doing the work. Don't be a dick by blatantly paying someone else for my efforts.
+This project exists because I enjoy doing the work. Don't be a dick by paying someone else for my efforts.
 
 ---
 
