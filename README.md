@@ -314,13 +314,26 @@ And remember:
 
 Some games contain ZIP files inside their game folder as part of the game’s original file structure. By default, RomVault treats ZIP files as archives and scans the **contents inside** them. In a few cases, what you actually need is for RomVault to treat the ZIP as a normal file.  The nested zip files included in this collection need to remain as a zip file for that game to function, and must not have any deflate algorithm applied to them that does not 100% align with the deflate algorithm, otherwise the game's decompressor will not be able to unpack the zip contents to use during gameplay. This means no ZStandard, no 7Zip. TorrentZip is OK to use but it does not create a "pure" deflate archive as it adds a comment line to indicate its deterministic hash, which is non-standard.
 
-Bearing all this in mind, I decided to simply ensure any nested zips in this collection all use the natural, simple and fully compatible Zip DEFLATE, with "STORE" compression set so no compression is applied to the nested zip or its contents. This gives the user the ability to recreate the zip archives should the need ever exist, as there is no compression to deal with. 7-Zip is the chosen archiver to create these nested and uncompressed zips.
+Bearing all this in mind, I decided to simply ensure any nested zips in this collection all use the natural, simple and fully compatible Zip DEFLATE, with "STORE" compression set so no compression is applied to the nested zip or its contents. This gives the user the ability to recreate the zip archives should the need ever exist, as there is no compression to deal with. Nested zips that don't come from MAME are made with 7-Zip; nested MAME zips are StoreZips (see below).
 
 Since most people will compress the parent game folder with TorrentZip, 7Zip or Zstandard, the lack of compression in these internal nested zips will be compressed at the parent level, so you'll still get space savings.
 
-## Rebuilding Tips for CHD's
+### Nested MAME zips are StoreZips
 
-As much as I dislike putting a CHD inside a zip, it cannot be helped.  Just understand that a CHD is a container, and contains its own compression formats internally, thus it has an internal SHA1 hash value of its internal contents. There is zero bonus for putting them inside a zip. They belong out on their own, in the raw. It would be too much work and confuse the hell out of most people who barely understand what a datfile is to keep CHD's in their native format and outside of zips. It's not ideal, but it's all I have to work with to keep things in the folder and structural format TPUI wants.
+Many games in the collection (NAOMI, Sega Model 2 and 3, Konami, Namco, Capcom and other arcade boards) carry MAME ROM sets as nested zips: the game's own MAME set, plus BIOS and device zips such as `naomi.zip`, `naomigd.zip` and `jvs13551.zip`. These are all **StoreZips**, marked `format="storezip"` in the dat.
+
+A StoreZip is a stored (uncompressed) zip with its files sorted, fixed dates, and nothing else in the zip. Its bytes depend only on the files inside it, so **anyone who builds one from the same MAME set gets the identical file**, with the same size, CRC and SHA-1 as the dat, on any computer. Zipping extracted files with 7-Zip or similar can't do that: the dates, folder entries and file order change from PC to PC.
+
+Every nested MAME zip holds exactly what the **MAME merged set** of the version the dat follows holds (currently MAME 0.289). Clones are included in their parent's zip, and BIOS and device ROMs are in their own zips, just as in MAME.
+
+**To rebuild a missing or damaged nested MAME zip:**
+
+1. Get **[Eggman's StoreZip](https://github.com/Eggmansworld/Eggmans_StoreZip/releases)** (Windows, Linux and macOS).
+2. Use MAME **merged** sets of the version the dat names. The reference is Pleasuredome's "MAME 0.xxx ROMs (merged)" set from the [Pleasuredome MAME page](https://pleasuredome.github.io/pleasuredome/mame/index.html). Non-merged or split sets, and "BIOS and devices" packs, hold different files and won't match.
+3. Drop the MAME zips you need onto StoreZip. It writes them to your output folder as `name.zip_`.
+4. Put those files in a RomVault ToSort and run **Fix**. RomVault matches them by hash and places them as `.zip` inside the right games.
+
+The `.zip_` extension is the same trick as in the workarounds below: it stops RomVault opening the nested zip as a set of its own. The exact format is in the [StoreZip spec](https://github.com/Eggmansworld/Eggmans_StoreZip/blob/main/docs/StoreZip-Format.md).
 
 ### Workarounds
 
@@ -330,6 +343,10 @@ As much as I dislike putting a CHD inside a zip, it cannot be helped.  Just unde
 That gets around the issue cleanly enough.
 
 RomVault also supports a **Mixed (archive as file)** mode, but that is not a good fit here because it effectively forces the collection into a fully uncompressed workflow, and this set is far too large for that to be a pleasant long-term choice.
+
+## Rebuilding Tips for CHD's
+
+As much as I dislike putting a CHD inside a zip, it cannot be helped.  Just understand that a CHD is a container, and contains its own compression formats internally, thus it has an internal SHA1 hash value of its internal contents. There is zero bonus for putting them inside a zip. They belong out on their own, in the raw. It would be too much work and confuse the hell out of most people who barely understand what a datfile is to keep CHD's in their native format and outside of zips. It's not ideal, but it's all I have to work with to keep things in the folder and structural format TPUI wants.
 
 ---
 
