@@ -318,15 +318,58 @@ Bearing all this in mind, I decided to simply ensure any nested zips in this col
 
 Since most people will compress the parent game folder with TorrentZip, 7Zip or Zstandard, the lack of compression in these internal nested zips will be compressed at the parent level, so you'll still get space savings.
 
-### Nested MAME zips are StoreZips
+### Nested MAME zips are StoreZips, lined up with MAME
 
-Many games in the collection (NAOMI, Sega Model 2 and 3, Konami, Namco, Capcom and other arcade boards) carry MAME ROM sets as nested zips: the game's own MAME set, plus BIOS and device zips such as `naomi.zip`, `naomigd.zip` and `jvs13551.zip`. These are all **StoreZips**, marked `format="storezip"` in the dat.
+Many games in the collection (NAOMI, Sega Model 2 and 3, Konami, Namco, Capcom and other arcade boards) carry MAME ROM sets as nested zips: the game's own MAME set, plus BIOS and device zips such as `naomi.zip`, `naomigd.zip` and `jvs13551.zip`. Every one of them is now a **StoreZip**, marked `format="storezip"` in the dat, and every ROM inside them matches official MAME.
 
-A StoreZip is a stored (uncompressed) zip with its files sorted, fixed dates, and nothing else in the zip. Its bytes depend only on the files inside it, so **anyone who builds one from the same MAME set gets the identical file**, with the same size, CRC and SHA-1 as the dat, on any computer. Zipping extracted files with 7-Zip or similar can't do that: the dates, folder entries and file order change from PC to PC.
+#### Why a fixed zip format is required
 
-Every nested MAME zip holds exactly what the **MAME merged set** of the version the dat follows holds (currently MAME 0.289). Clones are included in their parent's zip, and BIOS and device ROMs are in their own zips, just as in MAME.
+The dat doesn't only list the ROMs inside a nested zip. It also lists the **nested zip itself** as a file with its own size, CRC and SHA-1, and RomVault checks the whole file against that hash.
 
-**To rebuild a missing or damaged nested MAME zip:**
+The problem is that an ordinary zip's hash depends on far more than the ROMs inside it:
+- file dates;
+- the order the files were added;
+- folder entries and extra timestamp fields;
+- which tool made it, and its compression settings.
+
+Two people zipping the exact same ROMs with 7-Zip on two different PCs get two different files with two different hashes. That means a nested zip could never be rebuilt to match the dat. If yours went missing or got damaged, the only fix was finding someone else's copy.
+
+A **StoreZip** fixes every one of those bytes:
+- files stored (no compression), so the game can read them and your game zips still compress them at the parent level;
+- files sorted the same way every time;
+- one fixed date, no folder entries, no extra fields and no comment.
+
+What's left depends only on the ROMs inside. **The same ROMs always give the same StoreZip, byte for byte, on any computer**, so its hash in the dat can be reproduced by anyone.
+
+#### Why line up with official MAME
+
+MAME is the reference for these arcade boards. Its official ROM list (the MAME XML) records every ROM's name, size, CRC and SHA-1, which set it belongs to, and which ROMs belong to BIOS and device sets. It is corrected with every MAME release.
+
+Before this, many nested MAME zips in the collection were one-offs: trimmed to only the variant TeknoParrot used, packed from older MAME layouts, or carrying ROMs MAME now keeps in a device set. They worked, but nobody could recreate them from a real MAME set, and every one was slightly different.
+
+Lining up with MAME means:
+- **One standard.** Each nested MAME zip holds exactly what the **MAME merged set** of the version the dat follows holds (currently **MAME 0.289**). Clones are in their parent's zip, and BIOS and device ROMs are in their own zips, just as in MAME.
+- **Every ROM matches official MAME, byte for byte.** Every file inside every nested MAME zip has the name, size, CRC and SHA-1 MAME lists for it. Combined with the StoreZip format, every nested zip in the collection is exactly what you get by running StoreZip on that MAME merged set.
+- **You can rebuild from what you already have.** If you keep a MAME merged set, you already have everything needed to recreate any nested MAME zip in the collection.
+- **The collection follows MAME.** When a new MAME version changes a set, the collection's copy changes with it.
+
+The ROM files inside match MAME exactly. The zip containers are StoreZips, so their hashes won't match the TorrentZip zips in your MAME folder, but they will match anything StoreZip builds from that folder.
+
+#### Done by automation, not by hand
+
+None of this was repacked by hand. My dat tools do it:
+1. read the official MAME data and the MAME merged sets;
+2. build every nested MAME zip as a StoreZip straight from MAME's own zips, never from extracted files;
+3. check every file in it against MAME;
+4. refuse anything that doesn't match;
+5. update the dat.
+
+The same build is run again to prove the result: rebuilding every nested MAME zip in the collection from MAME gives back exactly the hashes in the dat.
+
+People make mistakes repacking hundreds of zips: a wrong file, a stale variant, a stray folder, a different date. A tool that follows a fixed spec and checks itself against MAME doesn't. That's what keeps the collection consistent and accurate from one release to the next.
+
+#### Rebuilding a missing or damaged nested MAME zip
+
 
 1. Get **[Eggman's StoreZip](https://github.com/Eggmansworld/Eggmans_StoreZip/releases)** (Windows, Linux and macOS).
 2. Use MAME **merged** sets of the version the dat names. The reference is Pleasuredome's "MAME 0.xxx ROMs (merged)" set from the [Pleasuredome MAME page](https://pleasuredome.github.io/pleasuredome/mame/index.html). Non-merged or split sets, and "BIOS and devices" packs, hold different files and won't match.
