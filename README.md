@@ -240,11 +240,7 @@ The page is fully client-side — no login, no install, works in any browser.
 
 ## About TPUI's ROM Scanner
 
-At one point, the TeknoParrot developers used my datfile as the reference for their internal **ROM Scanner** feature in TPUI. I added metadata fields and additional MD5 hashing to make it compatible with their scanner, but I had **no involvement** in how it was coded, how it behaved, how reliable it worked, or any feedback or input.
-
-At the end of October 2026, The TP Devs decided to remove support for my dat and instead have chosen to do things their own way.
-
-I will be removing the MD5 hashes from the datfile to reduce its size, as MD5 hashes are redundant and were only added to allow the datfile to be used with TPUI. RomVault has CRC and SHA1 values to use for hashing, which is more than plenty for file matching.
+-- NEW UPDATES COMING SOON! 
 
 ---
 
@@ -353,11 +349,23 @@ Lining up with MAME means:
 - **You can rebuild from what you already have.** If you keep a MAME merged set, you already have everything needed to recreate any nested MAME zip in the collection.
 - **The collection follows MAME.** When a new MAME version changes a set, the collection's copy changes with it.
 
-The ROM files inside match MAME exactly. The zip containers are StoreZips, so their hashes won't match the TorrentZip zips in your MAME folder, but they will match anything StoreZip builds from that folder.
+#### Why StoreZip? Why not just TorrentZip?
+- **Stored zips make the collection smaller.** The collection's game folders are TorrentZip or ZSTD-compressed by RomVault. A stored nested zip compresses well inside them, but a deflated (TorrentZip) one barely compresses at all. 
+
+For example, on "18 Wheeler":
+
+  | Nested zip | Size | Space it takes in the game zip | Deflated, TorrentZip-style |
+  |---|---|---|---|
+  | naomi.zip | 59.3 MB | 1.5 MB | ~9 MB |
+  | 18wheelr.zip | 189 MB | 86.6 MB | ~93 MB |
+
+  `naomi.zip` alone is nested in about 200 entries, so this adds up across the collection.
+  
+- **Byte-matching Pleasuredome wouldn't hold anyway.** Their sets are rebuilt with every MAME version, so a TorrentZip copy would only match while both sides were on the same release. Many users keep their MAME sets in other formats too (my own are RomVault RVZSTD, not TorrentZip). The ROM files inside match MAME exactly. The zip containers are StoreZips, so their hashes won't match the TorrentZip zips in your MAME folder, but they will match anything StoreZip builds from that folder.
 
 #### Done by automation, not by hand
 
-None of this was repacked by hand. My dat tools do it:
+None of this was repacked by hand. My own datfile tools do it:
 1. read the official MAME data and the MAME merged sets;
 2. build every nested MAME zip as a StoreZip straight from MAME's own zips, never from extracted files;
 3. check every file in it against MAME;
