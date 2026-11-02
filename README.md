@@ -238,9 +238,44 @@ The page is fully client-side — no login, no install, works in any browser.
 
 <a id="about-tpuis-rom-scanner"></a>
 
-## About TPUI's ROM Scanner
+## 🔍 TPUI's ROM Scanner — Now Checking Your Games Against This Collection
 
--- NEW UPDATES COMING SOON! 
+Good news: the TeknoParrot developers and I worked together to bring the community a greatly improved **ROM Scanner** in TPUI. It's out now, and it uses this collection's datfiles as its reference for checking that your games are complete and undamaged.
+
+> **Get it by updating TPUI.** Use the hamburger menu in the top-left of TPUI to **Check for Updates**, then **Install Updates**.
+
+### What it means for you
+
+- **Know your games are good.** The scanner tells you whether a game's files match a known-good copy, or whether something is missing or damaged, before you spend time troubleshooting.
+- **Always up to date.** When a new collection release comes out, TPUI picks up the new reference data. No manual downloads.
+- **Fewer false alarms.** Re-zipping or re-compressing your files won't trip the scanner up, as long as the actual game data is still correct.
+- **More games recognized.** One copy of a game can cover several of its versions and revisions in TeknoParrot, so the scanner knows what each copy is good for.
+- **One source of truth.** The same data that RomVault uses to build and fix your collection is what TPUI uses to check it.
+
+### Do I need StoreZip for the scanner?
+
+No. The scanner checks the files *inside* each nested MAME zip, so it doesn't care how the zip itself was packed. StoreZip only matters if you want your collection to match this one exactly in RomVault (see [Rebuilding Tips for Nested ZIPs](#rebuilding-tips-for-nested-zips)).
+
+### Who does what
+
+- **This collection (me):** curates and verifies the games, and publishes the reference data with every release.
+- **The TeknoParrot team:** builds the scanner into TPUI. It finds your games, sets them up, checks them against the reference, and launches them.
+
+### What changed in the datfiles
+
+You don't need to do anything differently. RomVault reads the datfiles exactly as before; the new information sits alongside it and RomVault simply ignores it. Behind the scenes, each release also includes:
+
+- A permanent ID for every game, so it can be tracked even if its name changes.
+- Fingerprints of the files *inside* the arcade-board ROM sets and CHD disc images, which is what makes the "re-zipping won't break it" part possible.
+- A small index file attached to each GitHub release, so TPUI knows exactly which data to download.
+
+MD5 hashes have also been removed. RomVault only needs CRC and SHA1, and dropping MD5 makes the datfile noticeably smaller.
+
+### Why
+
+A ROM scanner is only as good as the information it checks against. This collection is built and verified game by game, and sharing that work directly with TPUI means everyone gets a reliable "is my game OK?" answer. It saves you time, and it saves the TeknoParrot developers and Discord helpers from chasing problems that turn out to be a bad or incomplete download.
+
+> Questions about the scanner itself belong in the TeknoParrot Discord. Questions about the collection or the datfiles can come to me as usual.
 
 ---
 
