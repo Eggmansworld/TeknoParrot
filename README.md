@@ -242,6 +242,8 @@ The page is fully client-side — no login, no install, works in any browser.
 
 Good news: the TeknoParrot developers and I worked together to bring the community a greatly improved **ROM Scanner** in TPUI. It's out now, and it uses this collection's datfiles as its reference for checking that your games are complete and undamaged.
 
+> **To be clear:** this was a one-time collaboration. No fee or payment was received for this work, during or after the ROM scanner rework. I'm still just me, keeping this collection going on my own time. I'm not a TP dev.
+
 > **Get it by updating TPUI.** Use the hamburger menu in the top-left of TPUI to **Check for Updates**, then **Install Updates**.
 
 ### What it means for you
